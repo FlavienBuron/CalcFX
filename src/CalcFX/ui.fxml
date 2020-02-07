@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="249.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CalcFX.Controller">
+   <children>
+      <VBox alignment="CENTER" spacing="1.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+          <fx:define>
+              <Font fx:id="FONT" size="15" />
+              <Font fx:id="FONT_S" size="11" />
+          </fx:define>
+         <AnchorPane prefHeight="104.0" prefWidth="799.0" VBox.vgrow="ALWAYS">
+            <children>
+               <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                     <AnchorPane HBox.hgrow="ALWAYS">
+                        <children>
+                            <StackPane alignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                <Text fx:id="output" style="-fx-alignment: CENTER;" textAlignment="RIGHT" />
+                            </StackPane>
+                        </children>
+                     </AnchorPane>
+                  </children>
+               </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+            <children>
+                <HBox alignment="CENTER" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="55.0" onAction="#processNumpad" text="MC" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="55.0" onAction="#processNumpad" text="MS" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="55.0" onAction="#processNumpad" text="MR" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="55.0" onAction="#processOperator" text="M+" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="55.0" onAction="#processOperator" text="M-" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+            <children>
+                <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" minWidth="67.0" onAction="#processOperator" text="\%" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" minWidth="67.0" onAction="#processDel" text="CE" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" minWidth="67.0" onAction="#processDel" text="C" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minWidth="67.0" onAction="#processDel" text="DEL" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+            <children>
+                <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" minWidth="67.0" onAction="#processNumpad" text="1/x" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" maxWidth="1.7976931348623157E308" minWidth="67.0" onAction="#processOperator" text="x^2" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" maxWidth="1.7976931348623157E308" minWidth="67.0" onAction="#processOperator" text="sqrt" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="1.0" minWidth="67.0" onAction="#processOperator" text="/" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="7" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="8" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="9" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processOperator" text="*" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="4" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="5" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="6" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processOperator" text="-" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="1" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="2" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="3" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processOperator" text="+" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+         </AnchorPane>
+         <AnchorPane VBox.vgrow="ALWAYS">
+            <children>
+                <HBox alignment="CENTER" spacing="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processOperator" text="+/-" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processNumpad" text="0" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processOperator" text="." textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                          <Button alignment="CENTER" minWidth="67.0" onAction="#processOperator" text="=" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  </Button>
+                     </children>
+                  </AnchorPane>
+                </HBox>
+            </children>
+         </AnchorPane>
+      </VBox>
+   </children>
+</AnchorPane>
