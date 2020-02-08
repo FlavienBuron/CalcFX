@@ -8,28 +8,67 @@ import javafx.scene.text.Text;
 public class Controller {
     @FXML
     private Text output;
+    @FXML
+    private Text operationOut;
 
     private String operator = "";
-    private long num1 = 0;
-    private long num2 = 0;
+    private double num1 = 0;
+    private double num2 = 0;
+    private double numTemp = 0; // variable used to store the result of a single operand operation
+    private boolean reset = false; // variable set to true if "=" is pressed. Used to reset display for next operation
     private Model model = new Model();
 
     @FXML
     private void processNumpad(ActionEvent event){
         String value = ((Button)event.getSource()).getText();
+        if (reset == true){
+            operationOut.setText("");
+            output.setText("");
+            num1 = 0;
+            num2 = 0;
+            reset = false;
+        }
         output.setText(output.getText() + value);
+
     }
     @FXML
     private void processOperator(ActionEvent event){
         String value = ((Button)event.getSource()).getText();
-        System.out.println(value);
-        if(!(value.equals("="))){
-            operator = value;
-            num1 = Long.parseLong(output.getText());
+        if (reset == true){
+            operationOut.setText("");
             output.setText("");
+            num1 = 0;
+            num2 = 0;
+            reset = false;
+        }
+        if (value.equals("%") || value.equals("sqrt") || value.equals("1/x") || value.equals("x^2")){
+            operator = value;
+            numTemp = Double.parseDouble(output.getText());
+            operationOut.setText(operationOut.getText() + " " + numTemp + " " + operator);
+            numTemp = model.singleOperator(numTemp, operator);
+            output.setText(String.valueOf(numTemp));
+        } else if(!(value.equals("="))){
+            operator = value;
+            if(output.getText().equals("")){
+                num1 = 0;
+                operationOut.setText(operationOut.getText() + " " + num1 + " " + operator);
+            } else {
+                num1 = Double.parseDouble(output.getText());
+                output.setText("");
+                operationOut.setText(operationOut.getText() + " " + num1 + " " + operator);
+            }
         } else {
-            num2 = Long.parseLong(output.getText());
-            output.setText(String.valueOf(model.calculate(num1, num2, operator)));
+            if(output.getText().equals("")){
+                num2 = 0;
+                output.setText(String.valueOf(model.calculate(num1, num2, operator)));
+                operationOut.setText(operationOut.getText() + " " + num2);
+                reset = true;
+            } else {
+                num2 = Double.parseDouble(output.getText());
+                output.setText(String.valueOf(model.calculate(num1, num2, operator)));
+                operationOut.setText(operationOut.getText() + " " + num2);
+                reset = true;
+            }
         }
     }
     @FXML
@@ -46,10 +85,26 @@ public class Controller {
         } else if (value.equals("C")){
             output.setText("");
         } else if (value.equals("CE")){
+            num1 = 0;
+            num2 = 0;
             output.setText("");
+            operationOut.setText("");
         }
-
-
-
+    }
+    @FXML
+    private void processElem(ActionEvent event){
+        String value = ((Button)event.getSource()).getText();
+        if (reset == true){
+            operationOut.setText("");
+            output.setText("");
+            num1 = 0;
+            num2 = 0;
+            reset = false;
+        }
+        if (value.equals(".")) {
+            output.setText(output.getText() + ".");
+        } else {
+            output.setText("-" + output.getText());
+        }
     }
 }
