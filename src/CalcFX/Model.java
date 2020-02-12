@@ -1,6 +1,12 @@
 package CalcFX;
 
+import java.util.Stack;
+import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Model {
+    public static boolean isInt = false;
 
     public double calculate(double num1, double num2, String operator){
         switch (operator){
@@ -46,4 +52,56 @@ public class Model {
         return 0;
     }
 
+    public String process (String operations){
+        String opPost = toPostfix(operations);
+        StringBuilder result = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(opPost);
+        Stack number = new Stack();
+        while (st.hasMoreTokens()){
+            String token = st.nextToken();
+            if (isNumeric(token)){
+                double num = Double.parseDouble(token);
+                number.push(num);
+            } else {
+                double num2 = (double) number.pop();
+                double num1 = (double) number.pop();
+                number.push(calculate(num1, num2, token));
+            }
+        }
+        result.append(number.pop());
+        Pattern pattern = Pattern.compile("\\.0$");
+        Matcher m = pattern.matcher(result);
+        if (m.find()){
+            return result.delete(m.start(), m.end()).toString();
+        }
+        return result.toString();
+    }
+
+    private static String toPostfix(String expression) {
+        StringTokenizer st = new StringTokenizer(expression);
+        StringBuilder buffer = new StringBuilder();
+        StringBuilder result = new StringBuilder();
+        Stack operator = new Stack();
+        boolean isOp = false;
+        while (st.hasMoreTokens()) {
+            buffer.replace(0, buffer.length(), st.nextToken());
+            if (isNumeric(buffer.toString())){
+                result.append(buffer);
+                if (!isOp){
+                    result.append(" ");
+                } else {
+                    result.append(" ").append(operator.pop()).append(" ");
+                    isOp = false;
+                }
+            } else {
+                operator.push(buffer.toString());
+                isOp = true;
+            }
+        }
+        return result.toString();
+    }
+
+    private static boolean isNumeric (String str){
+        return str.matches("-?\\d+(\\.\\d+)?");
+    }
 }
