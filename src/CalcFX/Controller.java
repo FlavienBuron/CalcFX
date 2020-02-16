@@ -13,7 +13,8 @@ public class Controller {
 
     private String operator = "";
     private String prevOperator = "";
-    private String[] OPERAND = {"0","0"} ;
+    private String[] OPERAND = {"0","0"};
+    private String memory = "";
     private int count = 0;
     private int nbOp = 0; //number of operators being used. Used for control
     private double numTemp = 0; // variable used to store the result of a single operand operation
@@ -27,8 +28,11 @@ public class Controller {
         if (reset == true){
             operationOut.setText("");
             output.setText("");
+            operator = "";
+            prevOperator = "";
             nbOp = 0;
-            String[] OPERAND = {"0","0"};
+            OPERAND[0] = "0";
+            OPERAND[1] = "0";
             count = 0;
             isOpUsed = false;
             reset = false;
@@ -37,16 +41,25 @@ public class Controller {
             isOpUsed = false;
         }
         output.setText(output.getText() + value);
-
     }
+
     @FXML
     private void processOperator(ActionEvent event){
+        if (reset == true) {
+            operationOut.setText("");
+            nbOp = 0;
+            OPERAND[0] = "0";
+            OPERAND[1] = "0";
+            count = 0;
+            isOpUsed = false;
+            reset = false;
+        }
         if (!(operator.equals("") || operator.equals("="))){
             prevOperator = operator;
         }
         operator = ((Button)event.getSource()).getText();
         if (operator.equals("%") || operator.equals("sqrt") || operator.equals("1/x") || operator.equals("x^2")){
-            if (output.getText().equals("0")){
+            if (output.getText().equals("")){
                 numTemp = 0;
             } else {
                 numTemp = Double.parseDouble(output.getText());
@@ -58,19 +71,19 @@ public class Controller {
                 if(output.getText().equals("")){
                     OPERAND[count++] = "0";
                     operationOut.setText(operationOut.getText() + " " + OPERAND[count - 1] + " " + operator);
-                    double res = model.calculate(Double.parseDouble(OPERAND[count - 2]), Double.parseDouble(OPERAND[count - 1]), prevOperator);
-                    OPERAND[count--] = String.valueOf(res);
-                    output.setText(String.valueOf(res));
+                    String res = model.calculate(Double.parseDouble(OPERAND[count - 2]), Double.parseDouble(OPERAND[count - 1]), prevOperator);
+                    OPERAND[count--] = res;
+                    output.setText(res);
                     nbOp++;
                     isOpUsed = true;
                 } else {
                     System.out.println(count);
                     OPERAND[count++] = output.getText();
                     operationOut.setText(operationOut.getText() + " " + OPERAND[count - 1] + " " + operator);
-                    double res = model.calculate(Double.parseDouble(OPERAND[count - 2]), Double.parseDouble(OPERAND[count - 1]), prevOperator);
-                    OPERAND[count - 1] = String.valueOf(res);
+                    String res = model.calculate(Double.parseDouble(OPERAND[count - 2]), Double.parseDouble(OPERAND[count - 1]), prevOperator);
+                    OPERAND[count - 1] = res;
                     count = 0;
-                    output.setText(String.valueOf(res));
+                    output.setText(res);
                     nbOp++;
                     isOpUsed = true;
                 }
@@ -86,9 +99,9 @@ public class Controller {
                     if (operator.equals("*") || operator.equals("/")){
                         OPERAND[count] = "1";
                     }
-                    double res = model.calculate(Double.parseDouble(OPERAND[count - 1]), Double.parseDouble(OPERAND[count]), operator);
-                    OPERAND[count - 1] = String.valueOf(res);
-                    output.setText(String.valueOf(res));
+                    String res = model.calculate(Double.parseDouble(OPERAND[count - 1]), Double.parseDouble(OPERAND[count]), operator);
+                    OPERAND[count - 1] = res;
+                    output.setText(res);
                     nbOp++;
                     isOpUsed = true;
                 }
@@ -101,7 +114,7 @@ public class Controller {
                 } else {
                     OPERAND[count++] = output.getText();
                     operationOut.setText(operationOut.getText() + " " + OPERAND[count - 1] + " " + operator);
-                    double res = model.calculate(Double.parseDouble(OPERAND[count]), Double.parseDouble(OPERAND[count - 1]), prevOperator);
+                    String res = model.calculate(Double.parseDouble(OPERAND[count]), Double.parseDouble(OPERAND[count - 1]), prevOperator);
                     OPERAND[count - 1] = String.valueOf(res);
                     output.setText(String.valueOf(res));
                     nbOp++;
@@ -160,6 +173,29 @@ public class Controller {
             output.setText(output.getText() + ".");
         } else {
             output.setText("-" + output.getText());
+        }
+    }
+    @FXML
+    private void processMem(ActionEvent event){
+        String value = ((Button)event.getSource()).getText();
+        switch (value){
+            case "MC":
+                memory = "";
+                break;
+            case "MS":
+                memory = output.getText();
+                break;
+            case "MR":
+                output.setText(memory);
+                break;
+            case "M+":
+                memory = model.process(memory + " + " + output.getText());
+                output.setText(memory);
+                break;
+            case "M-":
+                memory = model.process(memory + " - " + output.getText());
+                output.setText(memory);
+                break;
         }
     }
 }

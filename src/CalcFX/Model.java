@@ -6,26 +6,47 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Model {
-    public static boolean isInt = false;
 
-    public double calculate(double num1, double num2, String operator){
+    private String res = "";
+
+    public String calculate(double num1, double num2, String operator){
         switch (operator){
             case "+":
-                return num1 + num2;
+                res = String.valueOf(num1 + num2);
+                if (isInt(res)){
+                    return res.substring(0, res.length() - 2);
+                } else {
+                    return res;
+                }
             case "-":
-                return num1 - num2;
+                res = String.valueOf(num1 - num2);
+                if (isInt(res)){
+                    return res.substring(0, res.length() - 2);
+                } else {
+                    return res;
+                }
             case "*":
-                return num1 * num2;
+                res = String.valueOf(num1 * num2);
+                if (isInt(res)){
+                    return res.substring(0, res.length() - 2);
+                } else {
+                    return res;
+                }
             case "/":
                 if(num2 != 0){
-                    return num1 / num2;
+                    res = String.valueOf(num1 / num2);
+                    if (isInt(res)){
+                        return res.substring(0, res.length() - 2);
+                    } else {
+                        return res;
+                    }
                 } else {
                     System.out.println("Cannot divide by zero !");
                 }
                 break;
         }
         System.out.println("Unknown operator : " + operator);
-        return 0;
+        return "";
     }
 
     public double singleOperator(double num, String operator){
@@ -61,10 +82,10 @@ public class Model {
             String token = st.nextToken();
             if (isNumeric(token)){
                 double num = Double.parseDouble(token);
-                number.push(num);
+                number.push(token);
             } else {
-                double num2 = (double) number.pop();
-                double num1 = (double) number.pop();
+                double num2 = Double.parseDouble((String)number.pop());
+                double num1 = Double.parseDouble((String)number.pop());
                 number.push(calculate(num1, num2, token));
             }
         }
@@ -104,4 +125,10 @@ public class Model {
     private static boolean isNumeric (String str){
         return str.matches("-?\\d+(\\.\\d+)?");
     }
+    private static boolean isInt (String str){
+        Pattern pattern = Pattern.compile("\\.0$");
+        Matcher m = pattern.matcher(str);
+        return m.find();
+    }
+
 }
